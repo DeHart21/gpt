@@ -1,3 +1,9 @@
+# Requirements of gpt4_app.py
+# sudo apt-get update
+# sudo apt-get install python3 python3-pip
+# pip3 install PyQt5 openai
+
+
 import sys
 import openai
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QTextEdit, QLabel
