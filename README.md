@@ -51,8 +51,8 @@ docker build -t <name_of_image> .
 After the build is complete, run the Docker container with the following command. Replace <API_KEY> with your OpenAI API key, <prompt> with the user input prompt, and <name_of_image> with the name of the image you used in the previous step:
 
 bash
-
-    sudo docker run -e OPENAI_API_KEY="<API_KEY>" -e user_input="<prompt>" -v $PWD/gptContainerFiles:/app/gptContainerFiles <name_of_image>
+    export OPENAI_API_KEY="<API_KEY>" 
+    docker run -e OPENAI_API_KEY=$OPENAI_API_KEY -v $PWD/gptContainerFiles:/app/gptContainerFiles <name_of_image> "<prompt>"
 
     The container will start, and the GPT-3.5 AI chat application will process your input. The AI's response will be displayed in the terminal.
 

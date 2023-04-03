@@ -3,6 +3,8 @@
 # Define the file path for saving the conversation history
 history_file="gptContainerFiles/conversation_history.json"
 
+user_input="$1"
+
 # Initialize the conversation history array by reading from the file
 if [ -f $history_file ]; then
   conversation_history=($(cat $history_file))
