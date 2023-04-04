@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    environment {
+            OPENAI_API_KEY=""
+    }
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/DeHart21/gpt.git', branch: 'devel'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'cd gptDocker && docker build -t test .'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'echo $OPENAI_API_KEY'
+                sh 'cd gptDocker && docker run -e OPENAI_API_KEY=$OPENAI_API_KEY -v $PWD/gptContainerFiles:/app/gptContainerFiles test "Hello my name is Bob."'
+            }
+        }
+    }
+}
